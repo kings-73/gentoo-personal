@@ -87,3 +87,127 @@ USE="X dbus bindist elogind networkmanager -systemd mmx sse sse2"
 `source /etc/profile`
 
 `export PS1="(chroot) ${PS1}"`
+
+## **4. Configurar Portage y Elegir perfil**
+
+`emerge-webrsync -v`
+
+`emerge --ask --sync --quiet`
+
+`eselect profile list`
+
+`eselect profile set 5`
+
+**NOTA:** Cambia el valor "5" por el deseado.
+
+## **5. Zona Horaria**
+
+`echo "America/Mexico_City" > /etc/timezone`
+
+`emerge --config sys-libs/timezone-data`
+
+`echo "es_MX.UTF-8 UTF-8" > /etc/locale.gen`
+
+`locale-gen`
+
+`eselect locale list`
+
+`eselect locale set 4`
+
+**NOTA:** De igual manera, cambie el valor "4" por el deseado.
+
+## **6. Configurar el Nucleo Linux**
+
+`emerge --ask sys-kernel/gentoo-sources`
+
+`ls -l /usr/src/linux`
+
+**NOTA:** el comando "ls -l" muestra el enlace simbólico a linux hecho por portage. En caso de no tenerlo realizarlo manualmente con los siguientes comandos:
+
+### **(Opcional) sólo en caso que no aparezca enlace simbólico**
+
+`eselect kernel list`
+
+`eselect kernel set 1`
+
+**NOTA:** Sustituya el valor "1" por el deseado en caso de ser necesario.
+
+### **Compilación del núcleo linux**
+
+`emerge --ask sys-kernel/genkernel`
+
+`emerge --ask sys-kernel/linux-firmware`
+
+`genkernel all` ó `genkernel --menuconfig all`
+
+**NOTA:** genkernel all para compilación completa (nuevos usuarios) ó genkernel --menuconfig all para usuarios experimentados que conozcan su harwware.
+
+### **7. Archivos de configuración**
+
+`nano -w /etc/fstab`
+
+```
+-* archivo fstab *-
+/dev/sda1  boot  vfat  noatime  0 0
+/dev/sda2  none  swap  sw       0 0
+/dev/sda3  /     ext4  noatime  0 1
+```
+
+`nano -w /etc/conf.d/hostname`
+
+```
+-* archivo hostname *-
+localhost="gentoo"
+```
+
+`nano -w /etc/hosts`
+
+```
+-* archivo hosts *-
+127.0.0.1 gentoo.redhogar gentoo localhost
+::1 gentoo
+```
+
+`nano -w /etc/conf.d/hwclock`
+
+```
+-* archivo hwclock *-
+clock="local"
+```
+
+`nano -w /etc/conf.d/keymaps`
+
+```
+-* archivo keymaps *-
+keymap="es"
+```
+
+### **8. Instalacion de GRUB EFI**
+
+`emerge -av sys-boot/grub:2`
+
+`grub-install --target=x86_64-efi --efi-directory=/boot`
+
+`grub-mkconfig -o /boot/grub/grub.cfg`
+
+### **9. Instalar Herramientas**
+
+`emerge -av net-misc/dhcpcd`
+
+`emerge -av gentoolkit`
+
+### **10. Password ROOT y salir del sistema**
+
+`passwd`
+
+`exit`
+
+`cd`
+
+`umount -l /mnt/gentoo/dev{/shm,/pts,} `
+
+`umount -R /mnt/gentoo`
+
+`reboot`
+
+**¡Felicidades, ya has instalado gentoo!**
