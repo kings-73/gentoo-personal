@@ -125,10 +125,6 @@ Cree un enlace simbólico que punte a las fuentes del núcleo instaladas:
 
 `eselect kernel set 1`
 
-`echo "sys-kernel/linux-firmware @BINARY-REDISTRIBUTABLE" > /etc/portage/package.license`
-
-`emerge --ask sys-kernel/linux-firmware`
-
 ### **Configuraciones necesarias**
 
 `cd /usr/src/linux`
@@ -306,6 +302,14 @@ File systems  --->
    <*> FUSE (Filesystem in Userspace) support
 ```
 
+`make && make modules_install`
+
+`make install`
+
+`echo "sys-kernel/linux-firmware @BINARY-REDISTRIBUTABLE" > /etc/portage/package.license`
+
+`emerge --ask sys-kernel/linux-firmware`
+
 ### **7. Archivos de configuración**
 
 `nano -w /etc/fstab`
@@ -355,6 +359,8 @@ keymap="es"
 `grub-mkconfig -o /boot/grub/grub.cfg`
 
 ### **9. Instalar Herramientas**
+
+`emerge -av sys-fs/dosfstools`
 
 `emerge -av net-misc/dhcpcd`
 
