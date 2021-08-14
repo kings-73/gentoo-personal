@@ -1,14 +1,13 @@
 # gentoo-personal
 Guía de instalación personal desde una distro existente. Algunas características son las siguientes:
 
-Modo UEFI
+* Modo UEFI
+* Gestor de servicios (Por defecto): OpenRC
+* MTP (Tranferencia de datos Android) y Tethering (Internet Móvil Android)
 
-Gestor de servicios: OpenRC
+**NOTA:** Para no tener problema con la conexión a internet recomiendo conexión por cable como primera opción. Como segunda opción puede conectar un telefono android que pueda compartir internet por USB, de esta manera tendrá internet inmediatamente sin configurar nada.
 
-Perfil estándar
-
-
-## **1. Preparación el disco**
+## **1. Preparación el disco para alojar la intalación Gentoo**
 
 Para mi intalación personal usaré el disco: /dev/sda. Para particionarlo usaré siguiente comando:
 
@@ -42,7 +41,7 @@ dev/sda2; Tipo: Linux file system; Tamaño: Resto del disco
 
 `date 081309002021`
 
-**NOTA:** El formato para introducir la fecha es: MMDDhhmmYYYY. En este ejemplo se setea: Junio 06 2021, Hora: 10:00 p.m.
+**NOTA:** El formato para introducir la fecha es: MMDDhhmmYYYY. En este ejemplo se setea: Agosto 13 de 2021, Hora: 10:00 p.m.
 
 `cd /mnt/gentoo`
 
@@ -52,23 +51,29 @@ dev/sda2; Tipo: Linux file system; Tamaño: Resto del disco
 
 **NOTA:** El stage utilizado es el disponible en la página en la fecha 13-08. Sustituya el stage por uno más actualizado. Para hacerlo vaya a la página: www.gentoo.org/downloads.
 
+### **Modificación del archivo de opciones de compilación**
+
 `nano -w /mnt/gentoo/etc/portage/make.conf`
 
 ```
 -* archivo make.conf *-
 COMMON_CFLAGS="-march=native -O2 -pipe"
-MAKEOPTS="-j5"
+MAKEOPTS="-j4"
 
 GRUB_PLATFORMS="efi-64"
 VIDEO_CARDS="intel i965 iris"
 
 L10N="es-MX es"
-USE="X dbus bindist elogind networkmanager -systemd mmx sse sse2"
+USE="X alsa bindist dbus elogind networkmanager policykit -systemd udisks wayland mmx sse sse2"
 ```
 
 ## **3. Enjaulamiento**
 
+Antes de montar los sistemas de archivos necesarios, copie la información de los DNS para asegurar que la red siga funcionando después de entrar al nuevo entorno.
+
 `cp --dereference /etc/resolv.conf /mnt/gentoo/etc/`
+
+### **Montaje los sistemas de archivos necesarios**
 
 `mount --types proc /proc /mnt/gentoo/proc`
 
@@ -88,17 +93,11 @@ USE="X dbus bindist elogind networkmanager -systemd mmx sse sse2"
 
 `export PS1="(chroot) ${PS1}"`
 
-## **4. Configurar Portage y Elegir perfil**
+## **4. Actualización del repositorio de Gento**
 
 `emerge-webrsync -v`
 
 `emerge --ask --sync --quiet`
-
-`eselect profile list`
-
-`eselect profile set 5`
-
-**NOTA:** Cambia el valor "5" por el deseado.
 
 ## **5. Zona Horaria**
 
@@ -114,33 +113,112 @@ USE="X dbus bindist elogind networkmanager -systemd mmx sse sse2"
 
 `eselect locale set 4`
 
-**NOTA:** De igual manera, cambie el valor "4" por el deseado.
+**NOTA:** Cambie el valor "4" por el deseado.
 
 ## **6. Configurar el Nucleo Linux**
 
 `emerge --ask sys-kernel/gentoo-sources`
 
-`ls -l /usr/src/linux`
-
-**NOTA:** el comando "ls -l" muestra el enlace simbólico a linux hecho por portage. En caso de no tenerlo realizarlo manualmente con los siguientes comandos:
-
-### **(Opcional) sólo en caso que no aparezca enlace simbólico**
+Cree un enlace simbólico que punte a las fuentes del núcleo instaladas:
 
 `eselect kernel list`
 
 `eselect kernel set 1`
 
-**NOTA:** Sustituya el valor "1" por el deseado en caso de ser necesario.
-
-### **Compilación del núcleo linux**
-
-`emerge --ask sys-kernel/genkernel`
+`echo "sys-kernel/linux-firmware @BINARY-REDISTRIBUTABLE" > /etc/portage/package.license`
 
 `emerge --ask sys-kernel/linux-firmware`
 
-`genkernel all` ó `genkernel --menuconfig all`
+### **Configuración manual del núcleo linux**
 
-**NOTA:** genkernel all para compilación completa (nuevos usuarios) ó genkernel --menuconfig all para usuarios experimentados que conozcan su harwware.
+`cd /usr/src/linux`
+
+`make menuconfig`
+
+```
+-* Sistema de inicio del kernel o init *-
+Gentoo Linux --->
+   Generic Driver Options --->
+      [*] Gentoo Linux support
+      [*] Linux dynamic and persistent device naming (userspace devfs) support
+      [*] Select options required by Portage features
+         Support for init systems, system and service managers --->
+            [*] OpenRC, runit and other script based systems and managers
+            [ ] systemd
+```
+
+```
+-* Sistema de archivos para montar dispositivos (Todo es un archivo en Linux) - Precione Shift + /  y escriba CONFIG_DEVMPFS_MOUNT*-
+Device drivers
+   Generic Drivers Options -->
+      [*] Maintain a devtmpfs filesystem to mount at /dev
+```
+
+```
+-* Soporte de disco SCSI - Precione Shift + /  y escriba CONFIG_BLK_DEV_SD*-
+Device drivers
+   SCSI device support -->
+      <*> SCSI disk support
+      <*> SCSI CDROM support
+      <*> SCSI generic support
+
+      [ ] SCSI low-level drivers --->
+
+   <*> Serial ATA and Parallel ATA drivers (libata) --->
+```
+
+```
+-* Sistema de archivos - Precione Shift + /  y escriba CONFIG_EXT3_FS, CONFIG_EXT4_FS, CONFIG_MSDOS_FS, CONFIG_VFAT_FS, CONFIG_PROC_FS, CONFIG_FUSE_FS*-
+File systems -->
+   <*> Second extended fs support
+   <*> The Extended 3 (ext3) filesystem
+   <*> The Extended 4 (ext4) filesystem
+   [*] Ext4 POSIX Access Control Lists
+   [*] Ext4 Security Labels
+   <*> FUSE (Filesystem in Userspace) support
+
+   DOS/FAT/EXFAT/NT Filesystems -->
+      <*> MSDOS fs support
+      <*> VFAT (Windows-95) fs support
+      <*> NTFS file system support
+      [*] NTFS write support
+      
+Pseudo Filsystems --->
+   [*] /proc file system support
+   [*] Tmpfs virtual memory file system support (former shm fs)
+```
+
+```
+-* Multinúcleo del procesador - Precione Shift + /  y escriba CONFIG_SMP*-
+Processor type and features --->
+   [*] Symmetric multi-processing support
+```
+
+```
+-* Cargador EFI y variables EFI en el núcleo linux + /  y escriba CONFIG_PARTITION_ADVANCED, CONFIG_EFI_PARTITION*-
+Enable the block layer -->
+   Partition Types -->
+      [*] Advanced partition selection
+      [*] EFI GUID Partition support
+```
+
+```
+-* Soporte GPT - Precione Shift + /  y escriba CONFIG_EFI, CONFIG_EFI_STUB, CONFIG_EFI_MIXED, CONFIG_EFI_VARS*-
+Processor type and features
+      [*] EFI runtime service support
+      [*]   EFI stub support
+      [*]      EFI mixed-mode support
+
+Firmware Drivers
+      EFI (Extensible Firmware Interface) Support -->
+         <*> EFI Variable Support via sysfs
+```
+
+```
+-* Emulación IA32 para ejecutar programas de 32 bits - Precione Shift + /  y escriba CONFIG_IA32_EMULATION*-
+Binary Emulations
+   [*] IA32 Emulation 
+```
 
 ### **7. Archivos de configuración**
 
