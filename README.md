@@ -150,7 +150,7 @@ Gentoo Linux --->
 ```
 
 ```
--* Sistema de archivos para montar dispositivos (Todo es un archivo en Linux) - Precione Shift + /  y escriba CONFIG_DEVMPFS_MOUNT*-
+-* Sistema de archivos para montar dispositivos (Todo es un archivo en Linux) - Precione Shift + /  y escriba CONFIG_DEVTMPFS_MOUNT *-
 Device drivers  --->
      Generic Drivers Options -->
           [*] Maintain a devtmpfs filesystem to mount at /dev
