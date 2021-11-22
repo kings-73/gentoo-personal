@@ -3,9 +3,11 @@ Esta es mi guía personal e informal de instalación de Gentoo en mi PC de escri
 
 Hardware:
 
+* Tarjeta Madre B460M Aorus Elite
 * Procesador: Intel core i3 10100
 * Memoria RAM: 8GB
 * Disco Duro: SSD 240 GB
+* Tarjeta de red inalámbrica PCI-Express (RTL8192EE)
 
 Configuración Gentoo:
 * Perfil: Por defecto
