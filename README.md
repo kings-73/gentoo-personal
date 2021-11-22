@@ -33,6 +33,10 @@ Una ves obteniedo los tres datos para conectarnos, podremos ejecutar el siguient
 
 **NOTA:** Como es obvio, debemos cambiar los datos INTERFAZ por el resultado obtenido al ejecutar el comando ifconfig. El SSID es el nombre de la red a la que nos conectaremos y por último el PASSWORD o la contraseña de nuestra red.
 
+Por último, nos queda verificar la conexión a internet de la siguiente manera:
+
+`ping c3 www.gentoo.org`
+
 ## **1. Preparación el disco para alojar la intalación Gentoo**
 
 Para mi intalación personal usaré el disco: /dev/sda. Para particionarlo usaré siguiente comando:
