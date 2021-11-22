@@ -6,7 +6,7 @@ Hardware:
 * Tarjeta Madre B460M Aorus Elite
 * Procesador: Intel core i3 10100
 * Memoria RAM: 8GB
-* Disco Duro: SSD 240 GB
+* SSD: Western Digital M.2 240 GB
 * Tarjeta de red inalámbrica PCI-Express (RTL8192EE)
 
 Configuración Gentoo:
