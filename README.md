@@ -1,5 +1,5 @@
 # gentoo-personal
-Esta es mi guía personal e informal de instalación de Gentoo en mi PC de escritorio. Por lo tanto, no la recomiendo para uso personal sino para fines educativos. Es decir, esta guí provee un aporte de como alguien realiza la instalación Gentoo en su equipo.
+Esta es mi guía personal e informal de instalación de Gentoo en mi PC de escritorio. Por lo tanto, no la recomiendo para uso personal sino para fines educativos. Es decir, esta guía provee un aporte de como alguien realiza la instalación Gentoo en su equipo.
 
 Hardware:
 
@@ -12,6 +12,24 @@ Configuración Gentoo:
 * Init: OpenRC (Por defecto)
 * Formateo del Disco: GPT
 * Arranque GRUB: EFI
+
+## **0. Conexión a Wifi**
+Para conectarnos a una red Wifi necesitamos conocer al menos 3 datos:
+1. Nombre del dispositivo de red inalámbrica (INTERFAZ)
+2. El nombre de nuestra red Wi-Fi (SSID)
+3. La contraseña de red (PASSWOWRD)
+
+Sabemos que el nombre de nuestra red y la contraseña la podemos obtener de nuestro router.
+
+Pero en caso de la interfaz de red podemos obtenerla mediante el comando:
+
+`ifconfig`
+
+Una ves obteniedo los tres datos para conectarnos, podremos ejecutar el siguiente comando:
+
+`wpa_supplicant -B -i INTERFAZ -c<(wpa_passphrase SSID PASSWORD)`
+
+**NOTA:** Como es obvio, debemos cambiar los datos INTERFAZ por el resultado obtenido al ejecutar el comando ifconfig. El SSID es el nombre de la red a la que nos conectaremos y por último el PASSWORD o la contraseña de nuestra red.
 
 ## **1. Preparación el disco para alojar la intalación Gentoo**
 
