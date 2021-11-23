@@ -47,7 +47,8 @@ Para mi intalación personal usaré el disco: /dev/sda. Para particionarlo usar�
 
 ```
 dev/sda1; Tipo: Efi system; Tamaño: 150M
-dev/sda2; Tipo: Linux file system; Tamaño: Resto del disco
+dev/sda2; Tipo: Linux file system; Tamaño: 15G
+dev/sda3; Tipo: Linux file system; Resto del disco
 ```
 
 
@@ -57,15 +58,15 @@ dev/sda2; Tipo: Linux file system; Tamaño: Resto del disco
 
 `mkfs.ext4 /dev/sda2`
 
-### **Montaje de sistemas de archivos**
+`mkfs.ext4 /dev/sda3`
 
-`mkdir /mnt/gentoo`
+### **Montaje de sistemas de archivos**
 
 `mount /dev/sda2 /mnt/gentoo`
 
-`mkdir /mnt/gentoo/boot`
+`mkdir /mnt/gentoo/home`
 
-`mount /dev/sda1 /mnt/gentoo/boot`
+`mount /dev/sda3 /mnt/gentoo/home`
 
 ## **2. Descargar y extraer el stage3**
 
