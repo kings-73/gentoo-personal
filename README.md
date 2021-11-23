@@ -16,24 +16,24 @@ Configuración Gentoo:
 * Arranque GRUB: EFI
 
 ## **0. Conexión a Wifi**
-Para conectarnos a una red Wifi necesitamos conocer al menos 3 datos:
+Esta guía supone que la tarjeta de red se encuentra dentro de los drivers disponibles en el CD de intalación de Gentoo.
+
+Tenga en cuenta que para conectarse a una red Wi-Fi necesita conocer al menos 3 datos:
 1. Nombre del dispositivo de red inalámbrica (INTERFAZ)
 2. El nombre de nuestra red Wi-Fi (SSID)
 3. La contraseña de red (PASSWOWRD)
 
-Sabemos que el nombre de nuestra red y la contraseña la podemos obtener de nuestro router.
+El  nombre de la red y la contraseña son proporcionados por su proveedor de internet. Sin embargo, es posible obtener el nombre de la interfaz de red con el siguiente comando:
 
-Pero en caso de la interfaz de red podemos obtenerla mediante el comando:
+`ifconfig -a`
 
-`ifconfig`
-
-Una ves obteniedo los tres datos para conectarnos, podremos ejecutar el siguiente comando:
+Una vez que se tiene el nombre de la interfaz puede conectarse a la red inalámbrica de la siguiente manera:
 
 `wpa_supplicant -B -i INTERFAZ -c<(wpa_passphrase SSID PASSWORD)`
 
-**NOTA:** Como es obvio, debemos cambiar los datos INTERFAZ por el resultado obtenido al ejecutar el comando ifconfig. El SSID es el nombre de la red a la que nos conectaremos y por último el PASSWORD o la contraseña de nuestra red.
+**NOTA:** Recuerde cambiar el INTERFAZ por el nombre del dispositivo de red que obtuvo con el comando ifconfig. No olvide también cambiar el nombre de la red (SSID) y su respectiva contraseña.
 
-Por último, nos queda verificar la conexión a internet de la siguiente manera:
+Por último, verifique la conexión a internet de la siguiente manera:
 
 `ping c3 www.gentoo.org`
 
