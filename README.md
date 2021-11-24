@@ -74,7 +74,7 @@ Verifique que la fecha y hora sean correctas:
 
 `date`
 
-En caso de ser necesario cambiar la fecha y hora, puede usar el mismo comando con el siguiente formato:
+En caso de ser necesario, cambie la fecha y hora usando el mismo comando con el siguiente formato:
 
 `date 081310002021`
 
