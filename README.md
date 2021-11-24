@@ -27,7 +27,7 @@ El  nombre de la red y la contraseña son proporcionados por su proveedor de int
 
 `ifconfig -a`
 
-Una vez que se tiene el nombre de la interfaz puede conectarse a la red inalámbrica de la siguiente manera:
+Una vez que se dispone del nombre de la interfaz puede conectarse a la red inalámbrica de la siguiente manera:
 
 `wpa_supplicant -B -i INTERFAZ -c<(wpa_passphrase SSID PASSWORD)`
 
