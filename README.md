@@ -15,7 +15,7 @@ Configuración Gentoo:
 * Formateo del Disco: GPT
 * Arranque GRUB: EFI
 
-## **0. Conexión a Wifi**
+☑## **0. Conexión a Wifi**
 Esta guía supone que la tarjeta de red se encuentra dentro de los drivers disponibles en el CD de intalación de Gentoo.
 
 Tenga en cuenta que para conectarse a una red Wi-Fi necesita conocer al menos 3 datos:
