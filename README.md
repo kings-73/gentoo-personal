@@ -71,6 +71,7 @@ dev/sda3; Tipo: Linux file system; Resto del disco
 ## **2. Descargar y extraer el stage3**
 
 Verifique que la fecha y hora sean correctas:
+
 `date`
 
 En caso de ser necesario cambiar la fecha y hora, puede usar el mismo comando con el siguiente formato:
