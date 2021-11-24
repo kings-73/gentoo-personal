@@ -70,6 +70,11 @@ dev/sda3; Tipo: Linux file system; Resto del disco
 
 ## **2. Descargar y extraer el stage3**
 
+Verifique que la fecha y hora sean correctas:
+`date`
+
+En caso de ser necesario cambiar la fecha y hora, puede usar el mismo comando con el siguiente formato:
+
 `date 081310002021`
 
 **NOTA:** El formato para introducir la fecha es: MMDDhhmmYYYY. En este ejemplo se setea: Agosto 13 de 2021, Hora: 10:00 p.m.
