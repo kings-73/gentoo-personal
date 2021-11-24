@@ -130,11 +130,21 @@ Antes de montar los sistemas de archivos necesarios, copie la información de lo
 
 `export PS1="(chroot) ${PS1}"`
 
+`mount /dev/sda1 /boot`
+
 ## **4. Actualización del repositorio de Gento**
 
 `emerge-webrsync -v`
 
 `emerge --ask --sync --quiet`
+
+`df`
+
+`emerge -av dev-lang/rust`
+
+`emerge -av dev-lang/spidermonkey`
+
+`emerge --ask --verbose --update --deep --newuse @world`
 
 ## **5. Zona Horaria**
 
