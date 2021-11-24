@@ -82,9 +82,9 @@ En caso de ser necesario cambiar la fecha y hora, puede usar el mismo comando co
 
 `cd /mnt/gentoo`
 
-`wget https://bouncer.gentoo.org/fetch/root/all/releases/amd64/autobuilds/20210808T170546Z/stage3-amd64-openrc-20210808T170546Z.tar.xz`
+`links www.gentoo.org/downloads`
 
-`tar -xpf stage3-amd64-openrc-20210808T170546Z.tar.xz --numeric-owner --xattrs-include="*.*"`
+`tar -xpf stage3-amd64-openrc-*.tar.xz --numeric-owner --xattrs-include="*.*"`
 
 **NOTA:** Sustituya el stage por el más actual llendo a la página: www.gentoo.org/downloads.
 
