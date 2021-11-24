@@ -31,7 +31,7 @@ Una vez que se dispone del nombre de la interfaz puede conectarse a la red inal�
 
 `wpa_supplicant -B -i INTERFAZ -c<(wpa_passphrase SSID PASSWORD)`
 
-**NOTA:** Recuerde cambiar el INTERFAZ por el nombre del dispositivo de red que obtuvo con el comando ifconfig. No olvide también cambiar el nombre de la red (SSID) y su respectiva contraseña.
+**NOTA:** Recuerde cambiar la palabra INTERFAZ por el nombre del dispositivo de red que obtuvo con el comando ifconfig. No olvide también cambiar el nombre de la red (SSID) y su respectiva contraseña.
 
 Por último, verifique la conexión a internet de la siguiente manera:
 
