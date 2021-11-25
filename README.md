@@ -25,7 +25,7 @@ Tenga en cuenta que para conectarse a una red Wi-Fi necesita conocer al menos 3 
 
 El  nombre de la red y la contraseña son proporcionados por su proveedor de internet. Sin embargo, es posible obtener el nombre de la interfaz de red con el siguiente comando:
 
-`ifconfig -a`
+`iwconfig` o `ifconfig -a`
 
 Una vez que se dispone del nombre de la interfaz puede conectarse a la red inalámbrica de la siguiente manera:
 
