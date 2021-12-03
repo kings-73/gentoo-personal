@@ -37,7 +37,7 @@ Por último, verifique la conexión a internet de la siguiente manera:
 
 `ping c3 www.gentoo.org`
 
-## **1. Preparación el disco para alojar la intalación Gentoo**
+## **☑ 1. Preparación el disco para alojar la intalación Gentoo**
 
 Para mi intalación personal usaré el disco: /dev/sda. Para particionarlo usaré siguiente comando:
 
@@ -106,7 +106,7 @@ L10N="es-MX es"
 USE="X alsa bindist dbus egl elogind introspection networkmanager policykit -systemd udev udisks wayland mmx mmxext sse sse2"
 ```
 
-## **3. Enjaulamiento**
+## **☑ 3. Enjaulamiento**
 
 Antes de montar los sistemas de archivos necesarios, copie la información de los DNS para asegurar que la red siga funcionando después de entrar al nuevo entorno.
 
@@ -134,7 +134,7 @@ Antes de montar los sistemas de archivos necesarios, copie la información de lo
 
 `mount /dev/sda1 /boot`
 
-## **4. Actualización del repositorio de Gento**
+## **☑ 4. Actualización del repositorio de Gento**
 
 `emerge-webrsync -v`
 
@@ -148,7 +148,7 @@ Antes de montar los sistemas de archivos necesarios, copie la información de lo
 
 `emerge --ask --verbose --update --deep --newuse @world`
 
-## **5. Zona Horaria**
+## **☑ 5. Zona Horaria**
 
 `echo "America/Mexico_City" > /etc/timezone`
 
@@ -371,7 +371,7 @@ File systems  --->
 
 `emerge --ask sys-kernel/linux-firmware`
 
-### **7. Archivos de configuración**
+### **☑ 7. Archivos de configuración**
 
 `nano -w /etc/fstab`
 
@@ -410,7 +410,7 @@ clock="local"
 keymap="es"
 ```
 
-### **8. Instalacion de GRUB EFI**
+### **☑ 8. Instalacion de GRUB EFI**
 
 `emerge -av sys-boot/grub:2`
 
@@ -428,7 +428,7 @@ keymap="es"
 
 `emerge -av gentoolkit`
 
-### **10. Password ROOT y salir del sistema**
+### **☑ 10. Password ROOT y salir del sistema**
 
 `passwd`
 
