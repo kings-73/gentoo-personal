@@ -84,6 +84,8 @@ En caso de ser necesario, cambie la fecha y hora usando el mismo comando con el 
 
 `links www.gentoo.org/downloads`
 
+`ls`
+
 `tar -xpf stage3-amd64-openrc-*.tar.xz --numeric-owner --xattrs-include="*.*"`
 
 **NOTA:** Sustituya el stage por el más actual llendo a la página: www.gentoo.org/downloads.
