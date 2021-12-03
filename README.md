@@ -47,7 +47,7 @@ Para mi intalación personal usaré el disco: /dev/sda. Para particionarlo usar�
 
 ```
 dev/sda1; Tipo: Efi system; Tamaño: 150M
-dev/sda2; Tipo: Linux file system; Tamaño: 15G
+dev/sda2; Tipo: Linux file system; Tamaño: 20G
 dev/sda3; Tipo: Linux file system; Resto del disco
 ```
 
@@ -379,6 +379,7 @@ File systems  --->
 -* archivo fstab *-
 /dev/sda1  boot  vfat  noatime  0 0
 /dev/sda2  /     ext4  noatime  0 1
+/dev/sda3  /home ext4  noatime  0 0
 ```
 
 `nano -w /etc/conf.d/hostname`
