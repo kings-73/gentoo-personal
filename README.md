@@ -47,7 +47,7 @@ Para mi intalación personal usaré el disco: /dev/sda. Para particionarlo usar�
 
 ```
 dev/sda1; Tipo: Efi system; Tamaño: 150M
-dev/sda2; Tipo: Linux file system; Tamaño: 20G
+dev/sda2; Tipo: Linux file system; Tamaño: 15G
 dev/sda3; Tipo: Linux file system; Resto del disco
 ```
 
