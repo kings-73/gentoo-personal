@@ -52,7 +52,7 @@ dev/sda3; Tipo: Linux file system; Resto del disco
 ```
 
 
-### **Creación y monteje sistemas de archivos**
+### **Creación y montaje sistemas de archivos**
 
 `mkfs.vfat -F 32 /dev/sda1`
 
