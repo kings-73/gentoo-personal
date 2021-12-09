@@ -103,7 +103,7 @@ GRUB_PLATFORMS="efi-64"
 VIDEO_CARDS="intel i965 iris"
 
 L10N="es-MX es"
-USE="X alsa bindist dbus egl elogind introspection networkmanager policykit -systemd udev udisks wayland mmx mmxext sse sse2"
+USE="elogind networkmanager -systemd -qt5"
 ```
 
 ## **☑ 3. Enjaulamiento**
