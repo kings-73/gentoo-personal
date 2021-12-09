@@ -394,7 +394,6 @@ localhost="gentoo"
 ```
 -* archivo hosts *-
 127.0.0.1 gentoo.redhogar gentoo localhost
-::1 gentoo
 ```
 
 `nano -w /etc/conf.d/hwclock`
