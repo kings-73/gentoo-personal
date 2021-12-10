@@ -41,7 +41,7 @@ Por último, verifique la conexión a internet de la siguiente manera:
 
 ## **☑ 1. Preparación el disco para alojar la intalación Gentoo**
 
-Particionamiento mediante la aplicaci
+Particionamiento mediante la aplicación cfdisk:
 
 `cfdisk /dev/sda`
 
@@ -189,7 +189,7 @@ Cree un enlace simbólico que apunte a las fuentes del núcleo instaladas:
 
 `make menuconfig`
 
-Véa la configuración del kernel aquhttps://github.com/kings-73/Kernel-Linux
+Véa la configuración del kernel aqui: https://github.com/kings-73/Kernel-Linux
 
 `make && make modules_install`
 
