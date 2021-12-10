@@ -1,4 +1,4 @@
-# gentoo-personals
+# Guia Personal Gentoo
 Guía personal e informal de instalación de Gentoo.
 
 Hardware:
