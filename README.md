@@ -86,9 +86,9 @@ En caso de ser necesario, cambie la fecha y hora usando el mismo comando con el 
 
 `ls`
 
-`tar -xpf stage3-amd64-openrc-*.tar.xz --numeric-owner --xattrs-include="*.*"`
+`tar -xvpf stage3-amd64-openrc-*.tar.xz --numeric-owner --xattrs-include="*.*"`
 
-**NOTA:** Sustituya el stage por el más actual llendo a la página: www.gentoo.org/downloads.
+**NOTA:** Sustituya el * por el nombre completo del stage.
 
 ### **Modificación del archivo de opciones de compilación**
 
@@ -96,14 +96,15 @@ En caso de ser necesario, cambie la fecha y hora usando el mismo comando con el 
 
 ```
 -* archivo make.conf *-
-COMMON_CFLAGS="-march=native -O2 -pipe"
+COMMON_CFLAGS="-march=skylake -O2 -pipe"
+CPU_FLAGS="aes avx avx2 f16c fma3 mmx mmxext pclmul popcnt sse sse2 sse3 sse4_1 sse4_2 ssse3"
 MAKEOPTS="-j4"
 
 GRUB_PLATFORMS="efi-64"
 VIDEO_CARDS="intel i965 iris"
 
 L10N="es-MX es"
-USE="elogind networkmanager -systemd -qt5"
+USE="X alsa elogind networkmanager -systemd -qt5"
 ```
 
 ## **☑ 3. Enjaulamiento**
@@ -134,11 +135,17 @@ Antes de montar los sistemas de archivos necesarios, copie la información de lo
 
 `mount /dev/sda1 /boot`
 
-## **☑ 4. Actualización del repositorio de Gento**
+## **☑ 4. Actualización del repositorio y selección de un perfil Gentoo**
 
 `emerge-webrsync -v`
 
 `emerge --ask --sync --quiet`
+
+`eselect profile list`
+
+`eselect profile set X`
+
+**NOTA:** Sustituya la X por el número del perfil deseado.
 
 `df`
 
@@ -419,8 +426,6 @@ keymap="es"
 `grub-mkconfig -o /boot/grub/grub.cfg`
 
 ### **9. Instalar Herramientas**
-
-`emerge --ask --verbose --update --deep --newuse @world`
 
 `emerge -av sys-fs/dosfstools`
 
