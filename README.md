@@ -189,7 +189,6 @@ Cree un enlace simbólico que apunte a las fuentes del núcleo instaladas:
 
 `make menuconfig`
 
-```
 Véa la configuración del kernel aquhttps://github.com/kings-73/Kernel-Linux
 
 `make && make modules_install`
