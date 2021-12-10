@@ -1,5 +1,5 @@
 # gentoo-personal
-Esta es mi guía personal e informal de instalación de Gentoo en mi PC de escritorio. Por lo tanto, no la recomiendo para uso personal sino para fines educativos. Es decir, esta guía provee un aporte de como alguien realiza la instalación Gentoo en su equipo.
+Guía personal e informal de instalación de Gentoo en mi PC de escritorio. Recomendada sólo para fines educativos. Es decir, esta guía provee un aporte de como alguien realiza la instalación Gentoo en su equipo.
 
 Hardware:
 
@@ -10,20 +10,22 @@ Hardware:
 * Tarjeta de red inalámbrica PCI-Express (RTL8192EE)
 
 Configuración Gentoo:
-* Perfil: Por defecto
+* Perfil: Gnome
 * Init: OpenRC (Por defecto)
 * Formateo del Disco: GPT
 * Arranque GRUB: EFI
 
 ## **☑ 0. Conexión a Wifi**
+
 Esta guía supone que la tarjeta de red se encuentra dentro de los drivers disponibles en el CD de intalación de Gentoo.
 
 Tenga en cuenta que para conectarse a una red Wi-Fi necesita conocer al menos 3 datos:
+
 1. Nombre del dispositivo de red inalámbrica (INTERFAZ)
 2. El nombre de nuestra red Wi-Fi (SSID)
 3. La contraseña de red (PASSWOWRD)
 
-El  nombre de la red y la contraseña son proporcionados por su proveedor de internet. Sin embargo, es posible obtener el nombre de la interfaz de red con el siguiente comando:
+El  nombre de la red y la contraseña son proporcionados por su proveedor de internet. Sin embargo, para obtener el nombre de la interfaz de red con el siguiente comando:
 
 `iwconfig` o `ifconfig -a`
 
