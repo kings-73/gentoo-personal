@@ -106,7 +106,7 @@ GRUB_PLATFORMS="efi-64"
 VIDEO_CARDS="intel i965 iris"
 
 L10N="es-MX es"
-USE="X alsa elogind networkmanager -systemd -qt5"
+USE="X alsa elogind networkmanager -systemd"
 ```
 
 ## **☑ 3. Enjaulamiento**
