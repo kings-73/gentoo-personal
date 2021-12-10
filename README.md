@@ -115,7 +115,7 @@ Antes de montar los sistemas de archivos necesarios, copie la información de lo
 
 `cp --dereference /etc/resolv.conf /mnt/gentoo/etc/`
 
-### **Montaje los sistemas de archivos necesarios**
+### ** Montaje los sistemas de archivos necesarios**
 
 `mount --types proc /proc /mnt/gentoo/proc`
 
@@ -127,7 +127,7 @@ Antes de montar los sistemas de archivos necesarios, copie la información de lo
 
 `mount --make-rslave /mnt/gentoo/dev`
 
-### **Entrar al nuevo entorno**
+### ** Entrar al nuevo entorno**
 
 `chroot /mnt/gentoo /bin/bash`
 
@@ -173,7 +173,7 @@ Antes de montar los sistemas de archivos necesarios, copie la información de lo
 
 **NOTA:** Cambie el valor "4" por el deseado.
 
-## **6. Configuración manual del Nucleo Linux**
+## **6. Configuración del Nucleo Linux**
 
 `emerge --ask sys-kernel/gentoo-sources`
 
@@ -189,187 +189,6 @@ Cree un enlace simbólico que apunte a las fuentes del núcleo instaladas:
 
 `make menuconfig`
 
-```
--* Sistema de inicio del kernel o init *-
-Gentoo Linux --->
-     Generic Driver Options --->
-          [*] Gentoo Linux support
-          [*] Linux dynamic and persistent device naming (userspace devfs) support
-          [*] Select options required by Portage features
-              Support for init systems, system and service managers --->
-                   [*] OpenRC, runit and other script based systems and managers
-                   [ ] systemd
-```
-
-```
--* Sistema de archivos para montar dispositivos (Todo es un archivo en Linux) - Precione Shift + /  y escriba CONFIG_DEVTMPFS_MOUNT *-
-Device drivers  --->
-     Generic Drivers Options -->
-          [*] Maintain a devtmpfs filesystem to mount at /dev
-```
-
-```
--* Soporte de disco SCSI - Precione Shift + /  y escriba CONFIG_BLK_DEV_SD*-
-Device drivers  --->
-     SCSI device support -->
-          <*> SCSI disk support
-          <*> SCSI CDROM support
-          <*> SCSI generic support
-
-          [ ] SCSI low-level drivers --->
-
-          <*> Serial ATA and Parallel ATA drivers (libata) --->
-```
-
-```
--* Sistema de archivos - Precione Shift + /  y escriba CONFIG_EXT3_FS, CONFIG_EXT4_FS, CONFIG_MSDOS_FS, CONFIG_VFAT_FS, CONFIG_PROC_FS, CONFIG_FUSE_FS*-
-File systems -->
-     <*> Second extended fs support
-     <*> The Extended 3 (ext3) filesystem
-     <*> The Extended 4 (ext4) filesystem
-     [*] Ext4 POSIX Access Control Lists
-     [*] Ext4 Security Labels
-     <*> FUSE (Filesystem in Userspace) support
-
-     DOS/FAT/EXFAT/NT Filesystems -->
-          <*> MSDOS fs support
-          <*> VFAT (Windows-95) fs support
-          <*> NTFS file system support
-          [*] NTFS write support
-      
-Pseudo Filsystems --->
-     [*] /proc file system support
-     [*] Tmpfs virtual memory file system support (former shm fs)
-```
-
-```
--* Multinúcleo del procesador - Precione Shift + /  y escriba CONFIG_SMP*-
-Processor type and features --->
-     [*] Symmetric multi-processing support
-```
-
-```
--* Cargador EFI y variables EFI en el núcleo linux + /  y escriba CONFIG_PARTITION_ADVANCED, CONFIG_EFI_PARTITION*-
-Enable the block layer -->
-     Partition Types -->
-          [*] Advanced partition selection
-          [*] EFI GUID Partition support
-```
-
-```
--* Soporte GPT - Precione Shift + /  y escriba CONFIG_EFI, CONFIG_EFI_STUB, CONFIG_EFI_MIXED, CONFIG_EFI_VARS*-
-Processor type and features
-     [*] EFI runtime service support
-     [*]   EFI stub support
-     [*]      EFI mixed-mode support
-
-Firmware Drivers
-     EFI (Extensible Firmware Interface) Support -->
-          <*> EFI Variable Support via sysfs
-```
-
-```
--* Emulación IA32 para ejecutar programas de 32 bits - Precione Shift + /  y escriba CONFIG_IA32_EMULATION*-
-Binary Emulations
-     [*] IA32 Emulation 
-```
-
-```
--* Dispositivos de entrada USB - Precione Shift + /  y escriba CONFIG_HID_GENERIC, CONFIG_USB_HID, CONFIG_USB_SUPPORT, CONFIG_USB_XHCI_HCD, CONFIG_USB_EHCI_HCD, CONFIG_USB_OHCI_HCD *-
-*-
-Device Drivers --->
-     HID support --->
-          -*- HID bus support
-          <*> Generic HID driver
-          [*] Battery level reporting for HID devices
-              USB HID support --->
-                   <*> USB HID transport layer
-          [*] USB support --->
-              <*> xHCI HCD (USB 3.0) support
-              <*> EHCI HCD (USB 2.0) support
-              < > OHCI HCD (USB 1.0) support
-```
-
-### **Configuraciones específicas**
-
-```
--* Gráficos Intel *-
-Device Drivers  --->
-     Graphics support  --->
-          <*> /dev/agpgart (AGP Support)  --->
-          --- /dev/agpgart (AGP Support)
-          -*-   Intel 440LX/BX/GX, I8xx and E7x05 chipset support
-          <*> Direct Rendering Manager (XFree86 4.1.0 and higher DRI support)  --->
-              --- Direct Rendering Manager (XFree86 4.1.0 and higher DRI support)
-                   [*]   Enable legacy fbdev support for your modesetting driver
-                   <*> Intel 8xx/9xx/G3x/G4x/HD Graphics
-                   [ ]   Enable alpha quality support for new Intel hardware by default
-                   ()    Force probe driver for selected new Intel hardware
-                   [*]   Enable capturing GPU state following a hang
-                   [*]     Compress GPU error state
-                   [*]   Always enable userptr support
-                   [ ]   Enable Intel GVT-g graphics virtualization host support
-```
-
-```
--* Tarjeta de Red Ethernet *-
-Device Drivers  --->
-     Networking device support  --->
-          [*] Network device support --->
-               [*]   Ethernet driver support  --->
-	            < >     Intel(R) PRO/100+ support
-                    < >     Intel(R) PRO/1000 Gigabit Ethernet support
-                    <M>     Intel(R) PRO/1000 PCI-Express Gigabit Ethernet support
-                    [*]     Support HW cross-timestamp on PCH devices
-```
-
-```
--* Tarjeta de WIFI *-
-Device Drivers  --->
-     [*] Network device support  --->
-          [*] Wireless LAN  --->
-	       [*]   Realtek devices
-                    < >     Realtek 8180/8185/8187SE PCI support
-                    < >     Realtek 8187 and 8187B USB support
-                    <M>     Realtek rtlwifi family of devices  --->
-                         <M>   Realtek RTL8192EE Wireless Network Adapter
-```
-
-```
--* Tarjeta de sonido *-
-Device Drivers --->
-     <*> Sound card support
-          <*> Advanced Linux Sound Architecture --->
-	      HD-Audio --->
-               <*> HD Audio PCI
-               [*] Build hwdep interface for HD-audio driver
-               [ ] Allow dynamic codec reconfiguration
-               [ ] Support digital beep via input layer
-               [ ] Support initialization patch loading for HD-audio
-               <*> Build Realtek HD-audio codec support
-               < > Build Analog Devices HD-audio codec support
-               < > Build IDT/Sigmatel HD-audio codec support
-               < > Build VIA HD-audio codec support
-               <*> Build HDMI/DisplayPort HD-audio codec support                         
-```
-
-```
--* Internet móvil (USB tethering) - Precione Shift + /  y escriba CONFIG_USB_USBNET *-
-Device Drivers --->
-     [*] Network device support --->
-          <M> USB Network Adapters --->
-               <M> Multi-purpose USB Networking Framework
-                    <M>  CDC Ethernet support (smart devices such as cable modems)
-                    <M>  CDC EEM support
-		    <M>  Host for RNDIS and ActiveSync devices
-                    <M>  Simple USB Network Links (CDC Ethernet subset)
-                     [*] Embedded ARM Linux links (iPaq, ...)
-```
-
-```
--* Transferencia de archivos Android - Precione Shift + /  y escriba CONFIG_FUSE_FS *-
-File systems  ---> 
-     <*> FUSE (Filesystem in Userspace) support
 ```
 
 `make && make modules_install`
@@ -421,15 +240,13 @@ keymap="es"
 
 ### **☑ 8. Instalacion de GRUB EFI**
 
-`emerge -av sys-boot/grub:2`
+`emerge -av sys-boot/grub:2 emerge -av sys-fs/dosfstools`
 
 `grub-install --target=x86_64-efi --efi-directory=/boot`
 
 `grub-mkconfig -o /boot/grub/grub.cfg`
 
-### **9. Instalar Herramientas**
-
-`emerge -av sys-fs/dosfstools`
+### **9. Instalar Herramientas Adicionales**
 
 `emerge -av net-misc/networkmanager`
 
