@@ -1,5 +1,5 @@
 # gentoo-personal
-Guía personal e informal de instalación de Gentoo en mi PC de escritorio. Recomendada sólo para fines educativos. Es decir, esta guía provee un aporte de como alguien realiza la instalación Gentoo en su equipo.
+Guía personal e informal de instalación de Gentoo.
 
 Hardware:
 
