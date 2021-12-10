@@ -41,7 +41,7 @@ Por último, verifique la conexión a internet de la siguiente manera:
 
 ## **☑ 1. Preparación el disco para alojar la intalación Gentoo**
 
-Para particionar su disco use el siguiente comando:
+Particionamiento mediante la aplicaci
 
 `cfdisk /dev/sda`
 
