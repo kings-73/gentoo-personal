@@ -1,19 +1,34 @@
-# Guia Personal Gentoo
-Guía personal e informal de instalación de Gentoo.
+# Guia Personal de Gentoo
 
-Hardware:
+## CAPÍTULO 1. Acerca de el presente manual
+
+Esta es una guía personal sobre la intalación de Gentoo en una computadora Ensamblada con componentes específicos que se detallarán más adelante. El objetivo es crear una instalación que optimice la computadora para poder realizar actividades como: gaming, edición de videos y edición de audio, usando de manera eficiente los recursos del PC.
+
+Esta guía no pretende sustituir al Handbook oficial de Gentoo, que concidero es el mejor recurso que podemos usar para aprender sobre la instalación de Gentoo. Sino que se pretende tener un manual adaptado a necesidades específicas para tener todo a la mano.
+
+## CAPÍTULO 2. Análisis de requerimientos
+
+### 2.1. Hardware:
+
+Listado de hardware específico del equipo.
 
 * Tarjeta Madre B460M Aorus Elite
-* Procesador: Intel core i3 10100
+* Procesador: Intel® Core™ i3-10100 CPU @ 3.60GHz, UHD Graphics 630
 * Memoria RAM: 8GB
 * SSD: Western Digital M.2 240 GB
 * Tarjeta de red inalámbrica PCI-Express (RTL8192EE)
+* Interfaz de Audio: Xenix 302 USB
 
-Configuración Gentoo:
-* Perfil: Gnome
-* Init: OpenRC (Por defecto)
-* Formateo del Disco: GPT
-* Arranque GRUB: EFI
+### 2.2. Software
+
+Es difícil proporcionar versiones de software específicas que se intalarán en este manual. Pero hasta el momento se conocen las siguientes:
+
+* Gentoo Linux 2022
+* Kernel 5.15.11
+* OpenRC 0.44.10
+* Gnome 40.5.0
+
+Por último, especificar que el sistema de arranque que se usará será UEFI. Y Grub:2.
 
 ## **☑ 0. Conexión a Wifi**
 
@@ -100,13 +115,19 @@ En caso de ser necesario, cambie la fecha y hora usando el mismo comando con el 
 -* archivo make.conf *-
 COMMON_CFLAGS="-march=skylake -O2 -pipe"
 CPU_FLAGS="aes avx avx2 f16c fma3 mmx mmxext pclmul popcnt sse sse2 sse3 sse4_1 sse4_2 ssse3"
-MAKEOPTS="-j4"
+
+# Tres compilaciones paralelas
+MAKEOPTS="-j3"
+
+# Idioma Español Mexico
+L10N="es-MX es"
+
+# Variable USE
+USE="elogind jpeg2k networkmanager -cups -pdf -qt5 -systemd"
 
 GRUB_PLATFORMS="efi-64"
 VIDEO_CARDS="intel i965 iris"
 
-L10N="es-MX es"
-USE="X alsa elogind networkmanager -systemd"
 ```
 
 ## **☑ 3. Enjaulamiento**
