@@ -114,7 +114,7 @@ En caso de ser necesario, cambie la fecha y hora usando el mismo comando con el 
 ```
 -* archivo make.conf *-
 COMMON_CFLAGS="-march=skylake -O2 -pipe"
-CPU_FLAGS="aes avx avx2 f16c fma3 mmx mmxext pclmul popcnt sse sse2 sse3 sse4_1 sse4_2 ssse3"
+CPU_FLAGS="aes avx avx2 f16c fma3 mmx mmxext pclmul popcnt rdrand sse sse2 sse3 sse4_1 sse4_2 ssse3"
 
 # Tres compilaciones paralelas
 MAKEOPTS="-j3"
