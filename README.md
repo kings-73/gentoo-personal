@@ -154,6 +154,8 @@ Antes de montar los sistemas de archivos necesarios, copie la información de lo
 
 `mount /dev/sda1 /boot`
 
+`mount /dev/sda3 /home`
+
 ## **☑ 4. Actualización del repositorio y selección de un perfil Gentoo**
 
 `emerge-webrsync -v`
