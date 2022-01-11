@@ -81,10 +81,6 @@ dev/sda3; Tipo: Linux file system; Resto del disco
 
 `mount /dev/sda2 /mnt/gentoo`
 
-`mkdir /mnt/gentoo/home`
-
-`mount /dev/sda3 /mnt/gentoo/home`
-
 ## **2. Descargar y extraer el stage3**
 
 Verifique que la fecha y hora sean correctas:
@@ -103,7 +99,7 @@ En caso de ser necesario, cambie la fecha y hora usando el mismo comando con el 
 
 `ls`
 
-`tar -xvpf stage3-amd64-openrc-*.tar.xz --numeric-owner --xattrs-include="*.*"`
+`tar xvpf stage3-amd64-openrc-*.tar.xz --numeric-owner --xattrs-include="*.*"`
 
 **NOTA:** Sustituya el * por el nombre completo del stage.
 
@@ -123,7 +119,7 @@ MAKEOPTS="-j3"
 L10N="es-MX es"
 
 # Variable USE
-USE="elogind jpeg2k networkmanager -cups -pdf -qt5 -systemd"
+USE="elogind jpeg2k networkmanager -bluetooth -cd -cups -dvd -pdf -qt5 -systemd"
 
 GRUB_PLATFORMS="efi-64"
 VIDEO_CARDS="intel i965 iris"
