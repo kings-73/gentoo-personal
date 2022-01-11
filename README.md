@@ -211,7 +211,11 @@ Cree un enlace simbólico que apunte a las fuentes del núcleo instaladas:
 
 Véa la configuración del kernel aqui: https://github.com/kings-73/Kernel-Linux
 
-`make && make modules_install`
+`make -j8`
+
+`make modules`
+
+`make modules_install`
 
 `make install`
 
