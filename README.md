@@ -221,7 +221,9 @@ Véa la configuración del kernel aqui: https://github.com/kings-73/Kernel-Linux
 
 `echo "sys-kernel/linux-firmware @BINARY-REDISTRIBUTABLE" > /etc/portage/package.license`
 
-`emerge --ask sys-kernel/linux-firmware`
+`emerge --ask genkernel`
+
+`genkernel --install initramfs`
 
 ### **☑ 7. Archivos de configuración**
 
