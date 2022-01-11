@@ -152,15 +152,16 @@ Antes de montar los sistemas de archivos necesarios, copie la información de lo
 
 `export PS1="(chroot) ${PS1}"`
 
+
 `mount /dev/sda1 /boot`
 
 `mount /dev/sda3 /home`
 
 ## **☑ 4. Actualización del repositorio y selección de un perfil Gentoo**
 
-`emerge-webrsync -v`
+`emerge-webrsync`
 
-`emerge --ask --sync --quiet`
+`emerge --ask --sync`
 
 `eselect profile list`
 
